@@ -1,0 +1,20 @@
+.tag {
+    color: #006ffa;
+    text-decoration: none;
+}
+
+.tag.character {
+    color: #00aa00;
+}
+
+.tag.creator {
+    color: #aa0000;
+}
+
+.tag.series {
+    color: #aa00aa;
+}
+
+.tag.namespaced {
+    color: #72a0c1;
+}

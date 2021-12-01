@@ -1,0 +1,14 @@
+.tag-list {
+    flex-basis: 30em;
+    padding-top: 1em;
+}
+
+.tag-list ul {
+    list-style-type: none;
+    padding-left: 1em;
+    margin: 0 0 1em 0;
+}
+
+.tag-list label {
+    font-weight: bold;
+}

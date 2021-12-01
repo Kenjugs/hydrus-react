@@ -1,0 +1,23 @@
+body {
+    padding: 0.5em;
+    font-family: 'roboto sans', helvetica, arial, sans-serif;
+}
+
+.search-results {
+    margin-top: 1em;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 2em;
+}
+
+.thumbnail-container {
+    border: 2px solid blue;
+    min-width: 1em;
+    min-height: 1em;
+
+}
+
+.thumbnail {
+    vertical-align: bottom;
+}

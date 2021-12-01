@@ -1,0 +1,23 @@
+div.search-bar-container {
+    border-radius: 0.5em;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    margin: 0.5em 0;
+    border: 1px solid #808080;
+    height: 2em;
+    padding: 0.25em;
+}
+
+input.search-bar {
+    outline: none;
+    border: none;
+    height: 100%;
+    width: 100%;
+    align-self: stretch;
+    font-size: 1.25em;
+}
+
+input.search-bar::placeholder {
+    color: #666666;
+}

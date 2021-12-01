@@ -1,0 +1,31 @@
+.results-pager {
+    display: flex;
+    justify-content: center;
+    gap: 0.5em;
+    flex-basis: 100%;
+}
+
+.results-container {
+    display: flex;
+    gap: 1em;
+    height: 70vh;
+}
+
+.pager-button {
+    background: #99b;
+    width: 2em;
+    height: 2em;
+    text-align: center;
+    line-height: 2em;
+    border-radius: 0.25em;
+    font-family: 'roboto sans', helvetica, arial, sans-serif;
+    font-weight: bold;
+    color: #eee;
+    border: 1px solid #669;
+    text-decoration: none;
+}
+
+.pager-button.selected {
+    background: steelblue;
+    color: gainsboro;
+}

@@ -1,0 +1,34 @@
+.item-container {
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+    flex-grow: 1;
+}
+
+.item-container .video-js .vjs-big-play-button {
+    top: calc(50% - (1.63332em / 2));
+    left: calc(50% - (3em / 2));
+}
+
+.item-container div[data-vjs-player].video-js {
+    flex-grow: 1;
+    width: auto;
+}
+
+.close-button {
+    width: 2em;
+    height: 2em;
+    border: 1px solid darkslategrey;
+    border-radius: 50%;
+    background-color: #9996;
+    color: darkslategrey;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.close-button::before {
+    content: '\d7'; /* × symbol */
+    font-size: 2em;
+}
