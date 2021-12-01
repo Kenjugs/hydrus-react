@@ -47,7 +47,7 @@ const SearchResults = function(props: SearchResultsProps) {
                 }
     
                 calls.push(
-                    hydrus.get_thumbnail({ file_id: file_id })
+                    hydrus.getThumbnail({ file_id: file_id })
                     .catch((reason) => {
                         console.error(reason.message);
                     })

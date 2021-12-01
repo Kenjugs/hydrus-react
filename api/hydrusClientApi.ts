@@ -202,15 +202,15 @@ class HydrusClient {
         return createAndSendXhr;
     }
     
-    private create_request<T>(method: string, endpoint: string, options?: BuildCallOptions): Promise<T> {
+    private createRequest<T>(method: string, endpoint: string, options?: BuildCallOptions): Promise<T> {
         return new Promise(this.createRequestCallback(method, endpoint, options));
     }
 
-    api_version(): Promise<ApiVersionResponse> {
-        return this.create_request('GET', 'api_version');
+    getApiVersion(): Promise<ApiVersionResponse> {
+        return this.createRequest('GET', 'api_version');
     }
 
-    search_files(actions: {tags: string[]}): Promise<SearchFilesResponse> {
+    getSearchFiles(actions: {tags: string[]}): Promise<SearchFilesResponse> {
         const options: BuildCallOptions = {};
 
         if (actions.tags === undefined) {
@@ -219,10 +219,10 @@ class HydrusClient {
         
         options.queryParams = { tags: JSON.stringify(actions.tags) };
         
-        return this.create_request('GET', 'get_files/search_files', options);
+        return this.createRequest('GET', 'get_files/search_files', options);
     }
 
-    get_file(actions: { file_id?: number, hash?: string }): Promise<Blob> {
+    getFile(actions: { file_id?: number, hash?: string }): Promise<Blob> {
         const options: BuildCallOptions = {};
 
         if (actions.file_id === undefined && actions.hash === undefined) {
@@ -239,10 +239,10 @@ class HydrusClient {
             options.queryParams = { file_id: actions.file_id };
         }
 
-        return this.create_request('GET', 'get_files/file', options);
+        return this.createRequest('GET', 'get_files/file', options);
     }
 
-    get_thumbnail(actions: { file_id?: number, hash?: string }): Promise<Blob> {
+    getThumbnail(actions: { file_id?: number, hash?: string }): Promise<Blob> {
         const options: BuildCallOptions = {};
 
         if (!('file_id' in actions) && !('hash' in actions)) {
@@ -259,10 +259,10 @@ class HydrusClient {
             options.queryParams = { file_id: actions.file_id };
         }
 
-        return this.create_request('GET', 'get_files/thumbnail', options);
+        return this.createRequest('GET', 'get_files/thumbnail', options);
     }
 
-    file_metadata(actions: { file_ids?: number[], hashes?: string[] }): Promise<FileMetadataResponse> {
+    getFileMetadata(actions: { file_ids?: number[], hashes?: string[] }): Promise<FileMetadataResponse> {
         const options: BuildCallOptions = {};
 
         if (actions.file_ids === undefined && actions.hashes === undefined) {
@@ -277,21 +277,23 @@ class HydrusClient {
             options.queryParams = { file_ids: JSON.stringify(actions.file_ids) };
         }
 
-        return this.create_request('GET', 'get_files/file_metadata', options);
+        return this.createRequest('GET', 'get_files/file_metadata', options);
     }
 
-    request_new_permissions(): Promise<RequestNewPermissionsResponse> {
+    getRequestNewPermissions(): Promise<RequestNewPermissionsResponse> {
         const options: BuildCallOptions = {};
         options.queryParams = {
             name: 'Hydrus React',
             basic_permissions: JSON.stringify([3]),
         };
 
-        return this.create_request('GET', 'request_new_permissions', options);
+        return this.createRequest('GET', 'request_new_permissions', options);
     }
 }
 
 const url = new URL(window.location.href);
+
+// assumes that the hydrus client will be running in the same place as the web server
 const config = {
     key: configuration.clientAccessKey,
     url: `${url.protocol}//${url.hostname}:${configuration.clientApiPort}/`,

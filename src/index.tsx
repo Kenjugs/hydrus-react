@@ -25,7 +25,7 @@ const App = function() {
         setHydrusVersion(response.hydrus_version);
     }
 
-    hydrus.api_version()
+    hydrus.getApiVersion()
     .then(setApiVersionFromResponse)
     .catch((reason) => {
         console.error(reason.message);
@@ -60,7 +60,7 @@ const App = function() {
             });
         }
 
-        hydrus.file_metadata({ file_ids: response.file_ids })
+        hydrus.getFileMetadata({ file_ids: response.file_ids })
         .then((response) => {
             addMetadataToResults(results, response);
             setSearchResults(results.slice());
@@ -101,7 +101,7 @@ const App = function() {
 
         lastSubmit.current = tags;
         
-        hydrus.search_files({ tags: tags })
+        hydrus.getSearchFiles({ tags: tags })
         .then(handleSearchResponse)
         .catch((reason) => {
             console.error(reason.message);
