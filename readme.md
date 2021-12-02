@@ -11,7 +11,7 @@ fill in your hydrus client api access key (and port if changed from default)
 
 ## 2. build
 run `npm run build` in a terminal  
-this will install the necessary `node_modules` and build output files to the `dist` folder
+this will build output files to the `dist` folder
 
 ## 3. run
 run `node app.js` in a terminal  

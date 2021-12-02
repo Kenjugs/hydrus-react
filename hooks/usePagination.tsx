@@ -16,7 +16,7 @@ const usePagination = function<T>(data: T[], pageLimit: number): [T[], React.Dis
 
     const reset = function(newData: T[]) {
         setCurrentPage(1);
-        setPageData(newData.slice(0, 16));
+        setPageData(newData.slice(0, pageLimit));
     };
 
     const totalPages = Math.ceil(data.length / pageLimit);
