@@ -1,11 +1,10 @@
 import React, { ChangeEvent, FormEvent } from 'react';
-
 import './tagSearch.css';
 
 type TagSearchProps = {
-    value: string,
-    onFormSubmit: (event: FormEvent<HTMLFormElement>) => void,
-    onInputValueChange: (event: ChangeEvent<HTMLInputElement>) => void,
+    value: string
+    onFormSubmit: (event: FormEvent<HTMLFormElement>) => void
+    onInputValueChange: (event: ChangeEvent<HTMLInputElement>) => void
 };
 
 const TagSearch = function(props: TagSearchProps) {

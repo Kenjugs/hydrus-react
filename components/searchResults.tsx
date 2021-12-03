@@ -1,22 +1,21 @@
 import React, { MouseEvent, Suspense, useEffect, useRef, useState } from 'react';
-
 import { Metadata } from '../api/hydrusClientApi';
 import usePagination from '../hooks/usePagination';
+const ImageViewer = React.lazy(() => import(/* webpackChunkName: "imageViewer" */ './imageViewer'));
 const VideoViewer = React.lazy(() => import(/* webpackChunkName: "videoViewer" */ './videoViewer'));
 const TagList = React.lazy(() => import(/* webpackChunkName: "tagList" */ './tagList'));
 import hydrus from '../api/hydrusClientApi';
-
 import './searchResults.css';
 
 type SearchResultsProps = {
-    results: SearchResult[],
-    updateSearchFromTagList: (event: MouseEvent<HTMLAnchorElement>) => void,
+    results: SearchResult[]
+    updateSearchFromTagList: (event: MouseEvent<HTMLAnchorElement>) => void
 };
 
 export type SearchResult = {
-    file_id?: number,
-    metadata?: Metadata,
-    thumbnail?: Blob,
+    file_id?: number
+    metadata?: Metadata
+    thumbnail?: Blob
 };
 
 const SearchResults = function(props: SearchResultsProps) {
@@ -104,6 +103,14 @@ const SearchResults = function(props: SearchResultsProps) {
         );
     } else if (viewItem && viewItem.metadata) {
         const tags = viewItem.metadata.service_names_to_statuses_to_display_tags['my tags'][0];
+        let itemViewer: JSX.Element | null = null;
+
+        if (viewItem.metadata.mime.startsWith('video')) {
+            itemViewer = <VideoViewer metadata={viewItem.metadata} onCloseItemClick={(e) => { handleCloseItemClick(e) }} />
+        } else if (viewItem.metadata.mime.startsWith('image')) {
+            itemViewer = <ImageViewer metadata={viewItem.metadata} onCloseItemClick={(e) => { handleCloseItemClick(e) }} />
+        }
+
         toRender = (
             <Suspense fallback={null}>
                 <div className="results-container">
@@ -114,10 +121,7 @@ const SearchResults = function(props: SearchResultsProps) {
                             props.updateSearchFromTagList(e);
                         }}
                     />
-                    <VideoViewer
-                        metadata={viewItem.metadata}
-                        onCloseItemClick={(e) => handleCloseItemClick(e)}
-                    />
+                    {itemViewer}
                 </div>
             </Suspense>
         );

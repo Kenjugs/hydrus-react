@@ -1,15 +1,12 @@
 import React, { MouseEvent, useEffect, useRef } from 'react';
-
 import { VideoJsPlayer, VideoJsPlayerOptions } from 'video.js';
-
 import hydrus, { Metadata } from '../api/hydrusClientApi';
-
 import 'video.js/dist/video-js.css';
 import './videoViewer.css';
 
 type VideoViewerProps = {
-    metadata: Metadata,
-    onCloseItemClick: (event: MouseEvent<HTMLAnchorElement>) => void,
+    metadata: Metadata
+    onCloseItemClick: (event: MouseEvent<HTMLAnchorElement>) => void
 };
 
 const VideoViewer = function(props: VideoViewerProps) {
@@ -63,15 +60,15 @@ const VideoViewer = function(props: VideoViewerProps) {
     }
         
     return (
-        <div className="item-container">
+        <div className="video-container">
             <div data-vjs-player>
                 <video
-                    ref={(node) => video.current = node}
+                    ref={(node) => { video.current = node }}
                     className="video-js"
                     onLoadedMetadata={(e) => (e.target as HTMLVideoElement).volume = 0.1}
                 />
             </div>
-            <a className="close-button" href="#" onClick={props.onCloseItemClick}></a>
+            <a className="close-video-button" href="#" onClick={props.onCloseItemClick}></a>
         </div>
     );
 }

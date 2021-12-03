@@ -1,10 +1,9 @@
 import React, { MouseEvent } from 'react';
-
 import './tag.css';
 
 type TagProps = {
-    value: string,
-    onTagClick: (event: MouseEvent<HTMLAnchorElement>) => void,
+    value: string
+    onTagClick: (event: MouseEvent<HTMLAnchorElement>) => void
 };
 
 const Tag = function(props: TagProps) {

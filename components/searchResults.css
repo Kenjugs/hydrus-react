@@ -2,12 +2,14 @@
     display: flex;
     justify-content: center;
     gap: 0.5em;
-    flex-basis: 100%;
+    grid-column: 1 / -1;
 }
 
 .results-container {
-    display: flex;
-    gap: 1em;
+    display: grid;
+    gap: 1em 1em;
+    grid-template-rows: 100%;
+    grid-template-columns: 30em 1fr;
     height: 70vh;
 }
 

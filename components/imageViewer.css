@@ -1,20 +1,18 @@
-.video-container {
+.image-container {
     display: flex;
     justify-content: center;
     gap: 1em;
+    place-self: center;
+    width: 100%;
+    height: 100%;
 }
 
-.video-container .video-js .vjs-big-play-button {
-    top: calc(50% - (1.63332em / 2));
-    left: calc(50% - (3em / 2));
+.image-container img {
+    object-fit: contain;
+    height: 100%;
 }
 
-.video-container div[data-vjs-player].video-js {
-    flex-grow: 1;
-    width: auto;
-}
-
-.close-video-button {
+.close-image-button {
     width: 2em;
     height: 2em;
     border: 1px solid darkslategrey;
@@ -27,7 +25,7 @@
     align-items: center;
 }
 
-.close-video-button::before {
+.close-image-button::before {
     content: '\d7'; /* × symbol */
     font-size: 2em;
 }

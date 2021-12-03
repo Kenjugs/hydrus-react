@@ -1,12 +1,10 @@
 import React, { MouseEvent } from 'react';
-
 import Tag from './tag';
-
 import './tagList.css';
 
 type TagListProps = {
-    tagList: string[],
-    onTagClick: (event: MouseEvent<HTMLAnchorElement>) => void,
+    tagList: string[]
+    onTagClick: (event: MouseEvent<HTMLAnchorElement>) => void
 };
 
 const TagList = function(props: TagListProps) {

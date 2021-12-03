@@ -5,19 +5,25 @@ body {
 
 .search-results {
     margin-top: 1em;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 2em;
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 2em 2em;
+    place-items: center;
 }
 
 .thumbnail-container {
     border: 2px solid blue;
     min-width: 1em;
     min-height: 1em;
-
 }
 
 .thumbnail {
     vertical-align: bottom;
+}
+
+@media screen and (max-width: 1550px) {
+    .search-results {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    }
 }
